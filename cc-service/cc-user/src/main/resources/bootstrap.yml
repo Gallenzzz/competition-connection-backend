@@ -1,0 +1,21 @@
+server:
+  port: 51801
+spring:
+  application:
+    name: cc-user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.47.100
+      config:
+        server-addr: 192.168.47.100
+        file-extension: yml
+#        namespace: ef128936-3461-42da-b126-9af4926941d9
+        enabled: true
+  profiles:
+    active: dev
+
+  redis:
+    host: 192.168.47.100
+    port: 6379
+

@@ -1,0 +1,17 @@
+server:
+  port: 51802
+spring:
+  application:
+    name: cc-article
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.47.100:8848
+      config:
+        server-addr: 192.168.47.100:8848
+        file-extension: yml
+        enabled: true
+#        namespace: ef128936-3461-42da-b126-9af4926941d9
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

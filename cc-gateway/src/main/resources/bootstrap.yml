@@ -1,0 +1,57 @@
+server:
+  port: 51601
+spring:
+  application:
+    name: cc-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.47.100:8848
+      config:
+        server-addr: 192.168.47.100:8848
+        file-extension: yml
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allow-credentials: true
+            allowedHeaders: "*"
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
+      routes:
+        # 平台管理
+        - id: user
+          uri: lb://cc-user
+          predicates:
+            - Path=/api/user/**
+            #filters:
+            #- StripPrefix= 1,
+        - id: team
+          uri: lb://cc-team
+          predicates:
+            - Path=/api/team/**
+        - id: article
+          uri: lb://cc-article
+          predicates:
+            - Path=/api/article/**
+        - id: message
+          uri: lb://cc-im
+          predicates:
+            - Path=/api/message/**
+      filter:
+        dedupe-response-header:
+          enabled: true
+      default-filters:
+        - DedupeResponseHeader=Vary Access-Control-Allow-Origin Access-Control-Allow-Headers Access-Control-Allow-Credentials,RETAIN_UNIQUE
+minio:
+  accessKey: minio
+  secretKey: ccminio
+  bucket: competition-connection
+  endpoint: http://192.168.47.100:9000
+  readPath: http://192.168.47.100:9000

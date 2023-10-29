@@ -1,0 +1,16 @@
+server:
+  port: 51803
+spring:
+  application:
+    name: cc-team
+#  main:
+#    # 解决Bean重复定义问题
+#    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.47.100:8848
+      config:
+        server-addr: 192.168.47.100:8848
+        file-extension: yml
+        enabled: true

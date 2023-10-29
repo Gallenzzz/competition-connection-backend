@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gallen.article.mapper.TaskInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.gallen.pojos.article.TaskInfo">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="priority" column="text" jdbcType="TINYINT"/>
+            <result property="taskType" column="publish_time" jdbcType="TINYINT"/>
+            <result property="executeTime" column="execute_time" jdbcType="TIMESTAMP"/>
+            <result property="version" column="version" jdbcType="INTEGER"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,priority,task_type,
+        execute_time,version,status,
+        params
+    </sql>
+</mapper>
